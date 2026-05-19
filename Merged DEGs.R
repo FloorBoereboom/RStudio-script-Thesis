@@ -1,11 +1,11 @@
-#Merged three Pt-based DEG tables into a single shared DEG dataset
+#Merge three Pt-based DEG tables into a single shared DEG dataset
 #Import complete DEGs tables obtained from R-ODAF Shiny app
 cis <- read.delim("~/stage/wetransfer_platinum-kidney-data_2026-03-05_1053/DS1_Cisplatin_FULL_DESeq2_results_FDR0.01_20260324_105312.txt")
 car <- read.delim ("~/stage/wetransfer_platinum-kidney-data_2026-03-05_1053/DS1_Carboplatin_FULL_DESeq2_results_FDR0.01_20260324_111113.txt")
 ox <- read.delim("~/stage/wetransfer_platinum-kidney-data_2026-03-05_1053/DS1_Oxaliplatin_FULL_DESeq2_results_FDR0.01_20260324_112033.txt")
 
 
-#Pool the DEGs table by overlapping Gene Identifiers
+#Merge three DEG tables by shared gene identifiers
 merge1 <- merge(cis, car, by = "GeneID")
 merge2 <- merge(merge1, ox, by = "GeneID")
 

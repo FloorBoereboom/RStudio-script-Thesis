@@ -1,55 +1,46 @@
 #PCA
-#Import raw datafile and change to data frame
-raw <- read.delim2("~/stage/wetransfer_platinum-kidney-data_2026-03-05_1053/sampleData_R-ODAF_shiny_cisplatin.txt")
+#1. Import normalized transcriptome count datafile and change to data frame
+raw <- read.delim2("data/count_matrix.txt")
 raw_df <- as.data.frame(raw)
 
 
-##Cisplatin
-#Make seperate data frame for cisplatin-treated cells
-raw_cis <- raw_df[, c("Cisplatin_5um_48h_R1", "Cisplatin_5um_72h_R3", "Cisplatin_5um_48h_R3", "Cisplatin_5um_24h_R3", "Cisplatin_5um_48h_R2", "Cisplatin_5um_24h_R2",
-                         "Cisplatin_5um_72h_R1", "Cisplatin_5um_72h_R2")]
+#Cisplatin
+#2. Make seperate data frame for cisplatin-treated cells
+raw_cis <- raw_df[, c("Cisplatin_5um_48h_R1", "Cisplatin_5um_72h_R3", "Cisplatin_5um_48h_R3", "Cisplatin_5um_24h_R3", "Cisplatin_5um_48h_R2", 
+                      "Cisplatin_5um_24h_R2", "Cisplatin_5um_72h_R1", "Cisplatin_5um_72h_R2")]
 
-#Make data frame numeric
-raw_cis[raw_cish] <- lapply(raw_cis[raw_cish], as.numeric)
+#3. Make data frame numeric
+raw_cis[] <- lapply(raw_cis, as.numeric)
 
-#Make new/empty data fram
-raw_cish <- c("Cisplatin_5um_48h_R1", "Cisplatin_5um_72h_R3", "Cisplatin_5um_48h_R3", "Cisplatin_5um_24h_R3", "Cisplatin_5um_48h_R2", "Cisplatin_5um_24h_R2",
-              "Cisplatin_5um_72h_R1", "Cisplatin_5um_72h_R2")
-
-
-#Make new column average over all samples
-raw_cis$mean_cis <- rowMeans(raw_cis[raw_cish], na.rm = TRUE)
+#4. Make new column taking the average over all replicates and time points
+raw_cis$mean_cis <- rowMeans(raw_cis, na.rm = TRUE)
 
 
+#Carboplatin
+#5. Make seperate data frame for carboplatin-treated cells
+raw_car <- raw_df[, c("Carboplatin_60um_48h_R1", "Carboplatin_60um_72h_R3", "Carboplatin_60um_48h_R3", "Carboplatin_60um_24h_R3", "Carboplatin_60um_48h_R2", 
+                      "Carboplatin_60um_24h_R2", "Carboplatin_60um_72h_R1", "Carboplatin_60um_72h_R2", "Carboplatin_60um_24h_R1")]
 
+#6. Make data frame numeric
+raw_car[] <-lapply(raw_car, as.numeric)
 
-##Carboplatin
-#Make seperate data frames for carboplatin-treated cells
-raw_car <- raw_df[, c("Carboplatin_60um_48h_R1", "Carboplatin_60um_72h_R3", "Carboplatin_60um_48h_R3", "Carboplatin_60um_24h_R3", "Carboplatin_60um_48h_R2", "Carboplatin_60um_24h_R2", "Carboplatin_60um_72h_R1", "Carboplatin_60um_72h_R2", "Carboplatin_60um_24h_R1")]
-raw_carh <- c("Carboplatin_60um_48h_R1", "Carboplatin_60um_72h_R3", "Carboplatin_60um_48h_R3", "Carboplatin_60um_24h_R3", "Carboplatin_60um_48h_R2", "Carboplatin_60um_24h_R2",
-              "Carboplatin_60um_72h_R1", "Carboplatin_60um_72h_R2", "Carboplatin_60um_24h_R1")
-#Make numeric
-raw_car[raw_carh] <-lapply(raw_car[raw_carh], as.numeric)
-
-#Make new column average over all samples
-raw_car$mean_car <- rowMeans(raw_car[raw_carh], na.rm = TRUE)
+#7. Make new column taking the average over all replicates and time points
+raw_car$mean_car <- rowMeans(raw_car, na.rm = TRUE)
 
 
 #Oxaliplatin
-#Make seperate data frames for oxaliplatin-treated cells
-raw_ox <- raw_df[, c("Oxaliplatin_15um_48h_R1", "Oxaliplatin_15um_72h_R3", "Oxaliplatin_15um_48h_R3", "Oxaliplatin_15um_24h_R3", "Oxaliplatin_15um_48h_R2", "Oxaliplatin_15um_24h_R2",
-                     "Oxaliplatin_15um_72h_R1", "Oxaliplatin_15um_72h_R2", "Oxaliplatin_15um_24h_R1")]
-raw_oxh <- c("Oxaliplatin_15um_48h_R1", "Oxaliplatin_15um_72h_R3", "Oxaliplatin_15um_48h_R3", "Oxaliplatin_15um_24h_R3", "Oxaliplatin_15um_48h_R2", "Oxaliplatin_15um_24h_R2",
-             "Oxaliplatin_15um_72h_R1", "Oxaliplatin_15um_72h_R2", "Oxaliplatin_15um_24h_R1")
+#8. Make seperate data frame for oxaliplatin-treated cells
+raw_ox <- raw_df[, c("Oxaliplatin_15um_48h_R1", "Oxaliplatin_15um_72h_R3", "Oxaliplatin_15um_48h_R3", "Oxaliplatin_15um_24h_R3", "Oxaliplatin_15um_48h_R2", 
+                     "Oxaliplatin_15um_24h_R2", "Oxaliplatin_15um_72h_R1", "Oxaliplatin_15um_72h_R2", "Oxaliplatin_15um_24h_R1")]
 
-#Make data frame numeric
-raw_ox[raw_oxh] <- lapply(raw_ox[raw_oxh], as.numeric)
+#9. Make data frame numeric
+raw_ox[] <- lapply(raw_ox, as.numeric)
 
-#Make new column average over all samples
-raw_ox$mean_ox <- rowMeans(raw_ox[raw_oxh], na.rm = TRUE)
+#10. Make new column taking the average over all replicates and time points
+raw_ox$mean_ox <- rowMeans(raw_ox, na.rm = TRUE)
 
 
-#Make new data frame with mean columns of three Pt-based compounds
+#11. Make new data frame with average columns of three Pt-based compounds
 df_mean <- data.frame(
   mean_cis = raw_cis$mean_cis,
   mean_car =raw_car$mean_car,
@@ -57,33 +48,29 @@ df_mean <- data.frame(
 )
 
 
-#Switch rows and columns
+#12. Switch rows for columns as samples should be the columns and genes rows
 df_mean1 <- as.data.frame(t(df_mean))
 
 
-#Check class
-class(df_mean1)
-
-
-#Transform data frame to matrix
+#13. Transform data frame to matrix because pca can only be calcualted for matrix 
 mat_mean <- as.matrix(df_mean1)
 
 
-#Remove the 0 values
+#14. Remove the zero values
 mat_mean_clean <- mat_mean[, apply(mat_mean, 2, function(x) sd(x, na.rm = TRUE) > 0)]
 
 
-#Change column names
+#15. Change sample names
 rownames(mat_mean_clean) <- c("cisplatin", "carboplatin", "oxaliplatin")
 
 
-#pca  
+#16. Perform pca and calculate eigenvalues
 pca <- prcomp(mat_mean_clean, scale. = TRUE)
 pc_eigenvalues <- (pca$sdev^2) / (sum(pca$sdev^2)) 
 per_var <- pc_eigenvalues * 100
 
 
-#pca plot
+#17. Create biplot of pca
 plot(pca$x[,1], pca$x[,2],
      xlab = "PC1 (58.1%)",
      ylab = "PC2 (41.9%)",

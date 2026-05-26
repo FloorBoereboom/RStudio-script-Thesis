@@ -4,7 +4,7 @@ Transcriptomic RNA-seq data were obtained from proximal tubule epithelial cells 
 These data served as input for downstream analysis and consisted of a normalized transcriptome count matrix and corresponding metadata table per Pt-based compound. 
 The datasets were preprocessed using the R-ODAF Shiny app which generated DEG tables for each Pt-based compound.
 
-Analysis performed:
+Rstudio scripts used in the analysis:
 1. Merged DEGs: The complete DEG tables (including non-significant padj values) from the three Pt-based compounds were merged together to obtain a shared DEG table.
 2. Overlapping DEGs: The significant DEG tables (padj<0.01) were merged to obtain the number of overlapping DEGs between two Pt-based compounds.
 3. PCA: PCA was performed on the normalized transcriptome count matrix to explore variance between the three compounds.

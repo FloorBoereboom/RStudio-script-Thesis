@@ -52,7 +52,7 @@ df_mean <- data.frame(
 df_mean1 <- as.data.frame(t(df_mean))
 
 
-#13. Transform data frame to matrix because pca can only be calcualted for matrix 
+#13. Transform data frame to matrix because pca can only be calculated for a matrix 
 mat_mean <- as.matrix(df_mean1)
 
 

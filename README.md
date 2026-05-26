@@ -5,7 +5,7 @@ These data served as input for downstream analysis and consisted of a normalized
 The datasets were preprocessed using the R-ODAF Shiny app which generated DEGs for each Pt-based compound.
 
 Analysis performed:
-1. Merged DEGs: DEG tables from the three Pt-based compounds were merged together to obtain a core transcriptional response.
+1. Merged DEGs: DEG tables from the three Pt-based compounds were merged together to obtain a shared DEG table.
 2. Overlapping DEGs: The number of DEGs overlapping between two Pt-based compounds was retreived
 3. PCA: PCA was performed to explore variance in the dataset
 4. Figure PCA: The resulting PCA plot

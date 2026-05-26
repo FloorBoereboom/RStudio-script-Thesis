@@ -2,7 +2,7 @@ This repository supports the bachelor thesis developed by Floor Boereboom under 
 
 Transcriptomic RNA-seq data were obtained from proximal tubule epithelial cells (ciPTEC) exposed to cisplatin, carboplatin and oxaliplatin in a previous study by Barnes et al. (2026). 
 These data served as input for downstream analysis and consisted of a normalized transcriptome count matrix and corresponding metadata table per Pt-based compound. 
-The datasets were preprocessed using the R-ODAF Shiny app which generated DEGs for each Pt-based compound.
+The datasets were preprocessed using the R-ODAF Shiny app which generated DEG tables for each Pt-based compound.
 
 Analysis performed:
 1. Merged DEGs: The complete DEG tables (including non-significant padj values) from the three Pt-based compounds were merged together to obtain a shared DEG table.
